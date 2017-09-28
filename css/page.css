@@ -1,3 +1,8 @@
+.no-scroll,
+.no-scroll * {
+    overflow: hidden !important;
+}
+
 #reader-mode {
     display: block;
     position: fixed;
@@ -14,8 +19,8 @@
     background: white;
     border: none;
 
-    overflow-y: scroll;
-    z-index: 999;
+    overflow: auto;
+    z-index: 9999999999999;
 
     opacity: 1;
 }
