@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+  "name": "Better FF Reader",
+  "author": "Isaac Khor",
+  "version": "0.1.0",
+  "description": "A better version of the built-in reader mode",
+  "homepage_url": "https://github.com/ClarenceClark/better-ff-reader",
+
+  "icons": {
+    "48": "icons/beasts-48.png"
+  },
+
+  "permissions": [
+    "activeTab"
+  ],
+
+  "browser_action": {
+    "default_area": "navbar",
+    "default_icon": "icons/beasts-32.png",
+    "default_title": "Beastify"
+  },
+
+  "commands": {
+    "toggle-reader-mode": {
+      "suggested_key": {
+        "default": "Ctrl+f7"
+      },
+      "description": "Toggle reader mode"
+    }
+  },
+
+  "background": {
+    "scripts": ["scripts/background.js"]
+  },
+
+  "web_accessible_resources": []
+}
