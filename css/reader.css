@@ -1,8 +1,133 @@
-#reader-mode .article-text {
-  font-family: "Athena", "Palatino", "Garamond", serif !important;
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#container {
+  font-family: "Athena", "Palatino", "Garamond", serif ;
   line-height: 1.5;
   max-width: 580px;
-  margin-left: auto;
-  margin-right: auto;
   font-size: 18px;
+
+  margin: 72px auto;
+}
+
+.btn-close:hover,
+.btn-close.active {
+    opacity: 1;
+}
+
+.btn-close {
+    top: 10px;
+    right: 16px;
+    font-size: 25px;
+
+    background: none;
+    border: 1px solid black;
+
+    position: fixed;
+    cursor: pointer;
+    transition: 0.2s;
+
+    color: black;
+    fill: black;
+    opacity: 0.3;
+}
+
+/* Based on aboutReaderContent.css */
+
+*::-moz-selection { background: #b4e7f8; }
+
+h1,h2,h3 { font-weight: bold; }
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+  text-align: center ;
+  font-weight: 600;
+  font-size: 2em;
+  line-height: 1.25em;
+}
+h2 { font-size: 1.2em;line-height: 1.51em;}
+h3 { font-size: 1em;  line-height: 1.66em;}
+
+a:link,
+a:link:hover,
+a:link:active, {
+  text-decoration: underline;
+  font-weight: normal;
+}
+
+a:link       { color: #27AAE1; }
+a:link:hover { color: #4ECAFF;}
+a:visited    { color: #c2e;}
+
+ul, ol { padding: 0;}
+ul { padding-inline-start: 30px; list-style: disc;}
+ol { padding-inline-start: 30px; list-style: decimal;}
+li { margin-bottom: 0;}
+li > ul, li > ol { margin-bottom: -10px;}
+li > p { margin: 0;}
+
+p > img:only-child,
+p > a:only-child > img:only-child,
+.wp-caption img,
+figure img {
+  display: block;
+}
+
+.caption, .wp-caption-text, figcaption {
+  font-size: 0.9em;
+  line-height: 1.48em;
+  font-style: italic;
+}
+
+code, pre {
+  white-space: pre-wrap;
+  background-color: lightgrey;
+  padding: 2px;
+  border-radius: 6px;
+}
+blockquote { padding: 0; padding-inline-start: 16px;}
+
+.visually-hidden,
+.visuallyhidden,
+.hidden,
+.invisible,
+.sr-only,
+.article-text br:-moz-any(:-moz-first-node, :-moz-last-node),
+.article-text:not(img):not(br):-moz-only-whitespace,
+.article-text:-moz-any(p, a, div, td):empty,
+.domain {
+  display: none;
+}
+
+.article-text div { padding: .3rem 0 .8rem;}
+.article-text br  { line-height: 1ex;}
+
+.caption, .wp-caption-text, figcaption {
+  font-size: .8em ;
+  text-align: justify ;
+}
+
+img {
+  border-color: #e1e1e1;
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  margin: 0 auto;
+  padding: 0.25em;
+  text-align: center;
+}
+
+figure {
+  display: table ;
+  margin: 0 auto ;
+  margin-bottom: 10px ;
+  padding: 15px ;
+}
+
+img, figcaption {
+  display: table-caption;
+  caption-side: bottom;
 }
