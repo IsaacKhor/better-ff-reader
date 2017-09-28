@@ -1,38 +1,46 @@
 {
   "manifest_version": 2,
-  "name": "Better FF Reader",
   "author": "Isaac Khor",
+  "name": "Better FF Reader",
   "version": "0.1.0",
   "description": "A better version of the built-in reader mode",
   "homepage_url": "https://github.com/ClarenceClark/better-ff-reader",
 
-  "icons": {
-    "48": "icons/icon-48.png"
-    "96": "icons/icon-96.png"
+  "icons": { "48": "icons/icon.svg" },
+  "permissions": ["activeTab"],
+
+  "applications": {
+    "gecko": {
+      "id": "better-ff-reader@isaackhor.com",
+      "strict_min_version": "55.0"
+    }
   },
 
-  "permissions": [
-    "activeTab"
-  ],
+  "page_action": {
+    "browser_style": false,
+    "default_icon": "icons/icon.svg",
+    "default_title": "Toggle Reader Mode (C-S-1)"
+  },
 
   "browser_action": {
-    "default_area": "navbar",
-    "default_icon": "icons/icon-32.png",
-    "default_title": "Reader mode"
+    "default_title": "Toggle reader mode",
+    "default_icon": "icons/icon.svg"
   },
 
   "commands": {
     "toggle-reader-mode": {
       "suggested_key": {
-        "default": "Ctrl+f7"
+        "default": "MacCtrl+Shift+1"
       },
-      "description": "Toggle reader mode"
+      "description": "Toggle Reader Mode"
     }
   },
 
   "background": {
-    "scripts": ["libs/Readability.js", "scripts/background.js"]
+    "scripts": ["scripts/background.js"]
   },
 
-  "web_accessible_resources": []
+  "web_accessible_resources": [
+    "libs/Readability.js"
+  ]
 }
