@@ -1,0 +1,8 @@
+#reader-mode .article-text {
+  font-family: "Athena", "Palatino", "Garamond", serif !important;
+  line-height: 1.5;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+}

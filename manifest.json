@@ -41,6 +41,8 @@
   },
 
   "web_accessible_resources": [
-    "libs/Readability.js"
+    "libs/Readability.js",
+    "css/page.css",
+    "css/reader.css"
   ]
 }
