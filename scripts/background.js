@@ -7,6 +7,7 @@ function toggleReadingMode(tab) {
   readabilityPr.then(
     function() {
       browser.tabs.executeScript(tabid, { file: "/scripts/content.js" })
+      browser.tabs.insertCSS(tabid, { file: "/css/page.css" })
     },
     function() {
       console.log("Readability failed to load")
