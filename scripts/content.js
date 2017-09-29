@@ -30,9 +30,17 @@ function enableOverlay() {
     var container = createContainer()
     container.appendChild(createCloseButton())
     container.appendChild(createMetaHeader(parsed.title))
-    container.appendChild(createContentContainer(parsed))
+    container.appendChild(createContentContainer(parsed.content))
 
+    document.addEventListener('keyup', keyUpHandler)
     ifb.appendChild(container)
+
+    console.log(ifd.links)
+    // Make links target the whole page, not just the iframe
+    Array.prototype.forEach.call(ifd.links, function(e,i) {
+      e.setAttribute("target", "_top")
+    })
+
     iframe.focus()
   })
 
@@ -48,10 +56,10 @@ function enableOverlay() {
     return container
   }
 
-  function createContentContainer(article) {
+  function createContentContainer(content) {
     var contentContainer = document.createElement("div")
     contentContainer.id = "reader-mode"
-    contentContainer.innerHTML = article.content
+    contentContainer.innerHTML = content
     return contentContainer
   }
 
@@ -87,6 +95,10 @@ function enableOverlay() {
     mdiv.appendChild(titleH)
     return mdiv
   }
+
+  function keyUpHandler(e) {
+    if (e.keyCode == 27) closeOverlay()
+  }
 }
 
 function main() {
@@ -97,7 +109,7 @@ function main() {
   }
 }
 
-function preMain() {
+(function preMain() {
   var initCheck = setInterval(checkInit, 200)
 
   function checkInit() {
@@ -106,6 +118,4 @@ function preMain() {
       main()
     }
   }
-}
-
-preMain()
+})()
