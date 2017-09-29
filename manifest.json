@@ -43,5 +43,7 @@
   "web_accessible_resources": [
     "libs/*",
     "css/*"
-  ]
+  ],
+
+  "options_page": "options.html"
 }
