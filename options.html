@@ -24,11 +24,15 @@
   <script src="/libs/css-lint.js"></script>
 </head>
 <body>
-  <h1>Better FF Reader Preferences</h1>
-
   <div id="container" >
+    <h1>Better FF Reader Preferences</h1>
+    <button id="btn-save">Save</button>
+    <button id="btn-reset">Reset to defaults</button>
+    <div class="label">Auto-enable regexes: </div>
     <div id="autoenable-list">
+      <textarea id="edit-autolist"></textarea>
     </div>
+    <div class="label">Custom Stylesheet: (applied to reader mode)</div>
     <div id="custom-stylesheet">
       <textarea id="edit-stylesheet"></textarea>
     </div>

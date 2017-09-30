@@ -1,0 +1,10 @@
+#container {
+  max-width: 800px;
+  margin: auto;
+}
+
+#custom-stylesheet,
+#autoenable-list {
+  border: 1px solid #ccc;
+  margin-bottom: 2em;
+}

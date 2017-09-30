@@ -11,15 +11,14 @@
 
   "applications": {
     "gecko": {
-      "id": "better-ff-reader@isaackhor.com",
+      "id": "d.betterffreader@isaackhor.com",
       "strict_min_version": "55.0"
     }
   },
 
   "page_action": {
-    "browser_style": false,
     "default_icon": "icons/icon.svg",
-    "default_title": "Toggle Reader Mode (C-S-1)"
+    "default_title": "Better reader mode"
   },
 
   "browser_action": {
@@ -45,5 +44,8 @@
     "css/*"
   ],
 
-  "options_page": "options.html"
+  "options_ui": {
+    "open_in_tab": true,
+    "page": "options.html"
+  }
 }
