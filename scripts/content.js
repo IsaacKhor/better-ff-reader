@@ -16,12 +16,6 @@ function closeOverlay() {
 
 function enableOverlay() {
   var parsed = getParsedArticle()
-  if(!parsed) {
-    parsed = {
-      title: "",
-      content: "Sorry, but this page could not be parsed."
-    }
-  }
   var iframe = document.createElement("iframe")
   iframe.id = "reader-mode"
   // Append to DOM now so that contentWindow is generated
@@ -87,7 +81,23 @@ function enableOverlay() {
       pathBase: loc.protocol + "//" + loc.host +
         loc.pathname.substr(0, loc.pathname.lastIndexOf("/") + 1)
     }
-    return new Readability(uri, document.cloneNode(true)).parse()
+    var readability = new Readability(uri, document.cloneNode(true))
+    var parsed = null
+    try { parsed = readability.parse() }
+    catch(e) {
+      console.log("Error parsing the page")
+      return {
+        title: "",
+        content: "<p>An error occured while parsing the page; please report the bug <a href=\"https://github.com/mozilla/readability/issues\">here</a>.</p><p>Error: <br/><pre>" + e.toString() + "</pre></p>"
+      }
+    }
+    if (!parsed) {
+      parsed = {
+        title: "",
+        content: "Sorry, but the page could not be parsed. If you feel like this page should have been parsed correctly, please report it <a href=\"https://github.com/mozilla/readability/issues\">here</a> (this extension uses the same parsing engine as Firefox's builtin reading mode, so bugs should be reported there)."
+      }
+    }
+    return parsed
   }
 
   function createMetaHeader(title) {
