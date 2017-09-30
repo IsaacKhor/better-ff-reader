@@ -29,7 +29,7 @@ function enableOverlay() {
 
     var container = createContainer()
     container.appendChild(createCloseButton())
-    container.appendChild(createMetaHeader(document.title))
+    container.appendChild(createMetaHeader(parsed.title))
     container.appendChild(createContentContainer(parsed.content))
 
     document.addEventListener('keyup', keyUpHandler)
