@@ -11,11 +11,17 @@ function addStylesheet(css, doc, classN) {
 function closeOverlay() {
   var elem = document.querySelector("#reader-mode")
   elem.parentNode.removeChild(elem)
-  document.body.classList.remove("no-scroll")
+  document.documentElement.classList.remove("no-scroll")
 }
 
 function enableOverlay() {
   var parsed = getParsedArticle()
+  if(!parsed) {
+    parsed = {
+      title: "",
+      content: "Sorry, but this page could not be parsed."
+    }
+  }
   var iframe = document.createElement("iframe")
   iframe.id = "reader-mode"
   // Append to DOM now so that contentWindow is generated
@@ -35,7 +41,6 @@ function enableOverlay() {
     document.addEventListener('keyup', keyUpHandler)
     ifb.appendChild(container)
 
-    console.log(ifd.links)
     // Make links target the whole page, not just the iframe
     Array.prototype.forEach.call(ifd.links, function(e,i) {
       e.setAttribute("target", "_top")
@@ -48,7 +53,8 @@ function enableOverlay() {
     addStylesheet("/css/page.css", document, "page-css")
 
   // Prevent the original document from scrolling
-  document.body.classList.add("no-scroll")
+  document.documentElement.classList.add("no-scroll")
+  iframe.focus()
 
   function createContainer() {
     var container = document.createElement("div")
@@ -110,7 +116,7 @@ function main() {
 }
 
 (function preMain() {
-  var initCheck = setInterval(checkInit, 200)
+  var initCheck = setInterval(checkInit, 100)
 
   function checkInit() {
     if(Readability) {
