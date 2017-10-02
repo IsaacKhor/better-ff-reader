@@ -7,7 +7,7 @@
   "homepage_url": "https://github.com/ClarenceClark/better-ff-reader",
 
   "icons": { "48": "icons/icon.svg" },
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "storage"],
 
   "applications": {
     "gecko": {
@@ -29,7 +29,7 @@
   "commands": {
     "toggle-reader-mode": {
       "suggested_key": {
-        "default": "MacCtrl+Shift+1"
+        "default": "Ctrl+0"
       },
       "description": "Toggle Reader Mode"
     }
