@@ -13,4 +13,9 @@
       stylesheet: stylesheetEditor.getValue()
     })
   })
+
+  document.getElementById("btn-reset").addEventListener('click', function(e) {
+    stylesheetEditor.setValue("")
+    listEditor.setValue("")
+  })
 })()
