@@ -24,8 +24,12 @@ function enableOverlay() {
   iframe.addEventListener("load", function() {
     var ifd = iframe.contentWindow.document
     var ifb = ifd.body
+    var customStylesheet = browser.storage.sync.get("stylesheet")
 
     addStylesheet("/css/reader.css", ifd)
+    customStylesheet.then(function(e) {
+      ifd.head.appendChild(getCustomStylesheetElem(e.stylesheet))
+    })
 
     var container = createContainer()
     container.appendChild(createCloseButton())
@@ -54,6 +58,13 @@ function enableOverlay() {
     var container = document.createElement("div")
     container.id = "container"
     return container
+  }
+
+  function getCustomStylesheetElem(stylesheet) {
+    var style = document.createElement("style")
+    style.id = "custom-stylesheet"
+    style.innerText = stylesheet
+    return style
   }
 
   function createContentContainer(content) {
