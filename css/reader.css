@@ -83,10 +83,11 @@ figure img {
 }
 
 code, pre {
-  white-space: pre-wrap;
+  white-space: pre;
   background-color: lightgrey;
   padding: 2px;
   border-radius: 6px;
+  overflow: scroll;
 }
 blockquote { padding: 0; padding-inline-start: 16px;}
 
