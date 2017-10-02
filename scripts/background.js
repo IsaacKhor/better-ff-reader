@@ -35,8 +35,7 @@ function onTabUpdate(id, info, tab) {
 }
 
 function onOptionsUpdate(changes, area) {
-  console.log(changes, area)
-  if(changes.enableRegexes && changes.enableRegexes.length > 0) {
+  if(changes.enableRegexes && changes.enableRegexes.newValue.length > 0) {
     enableRegexes = changes.enableRegexes.newValue.map(function(e) {
       return new RegExp(e)
     })
