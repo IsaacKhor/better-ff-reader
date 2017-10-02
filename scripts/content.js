@@ -63,7 +63,7 @@ function enableOverlay() {
   function getCustomStylesheetElem(stylesheet) {
     var style = document.createElement("style")
     style.id = "custom-stylesheet"
-    style.innerText = stylesheet
+    style.textContent = stylesheet
     return style
   }
 
@@ -99,13 +99,21 @@ function enableOverlay() {
       console.log("Error parsing the page")
       return {
         title: "",
-        content: "<p>An error occured while parsing the page; please report the bug <a href=\"https://github.com/mozilla/readability/issues\">here</a>.</p><p>Error: <br/><pre>" + e.toString() + "<br/>" + e.stack + "</pre></p>"
+        content:
+          "<p>An error occured while parsing the page; please report the bug" +
+          "<a href=\"https://github.com/mozilla/readability/issues\">here</a>." +
+          "</p><p>Error: <br/><pre>" + e.toString() + "<br/>" + e.stack + "</pre></p>"
       }
     }
     if (!parsed) {
       parsed = {
         title: "",
-        content: "Sorry, but the page could not be parsed. If you feel like this page should have been parsed correctly, please report it <a href=\"https://github.com/mozilla/readability/issues\">here</a> (this extension uses the same parsing engine as Firefox's builtin reading mode, so bugs should be reported there)."
+        content:
+          "Sorry, but the page could not be parsed. If you feel like this" +
+          " page should have been parsed correctly, please report it" +
+          " <a href=\"https://github.com/mozilla/readability/issues\">here</a>"+
+          " (this extension uses the same parsing engine as Firefox's builtin" +
+          " reading mode, so bugs should be reported there)."
       }
     }
     return parsed
