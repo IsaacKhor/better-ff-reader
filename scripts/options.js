@@ -8,8 +8,9 @@
     { lineNumbers: true })
 
   browser.storage.sync.get().then(function(o) {
+    console.log("Pref values: ", o)
     stylesheetEditor.setValue(o.stylesheet)
-    listEditor.setValue(o.enableRegexes)
+    listEditor.setValue(o.enableRegexes.join('\n'))
   })
 
   document.getElementById("btn-save").addEventListener('click', function(e) {

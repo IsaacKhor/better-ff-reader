@@ -84,11 +84,12 @@ figure img {
 
 code, pre {
   white-space: pre;
-  background-color: lightgrey;
+  background-color: rgba(0,0,0,0.05);
   padding: 2px;
   border-radius: 6px;
   overflow: scroll;
   font-size: 14px;
+  padding: 4px;
 }
 
 blockquote { padding: 0; padding-inline-start: 16px;}
