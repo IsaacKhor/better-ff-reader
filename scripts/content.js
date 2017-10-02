@@ -99,7 +99,7 @@ function enableOverlay() {
       console.log("Error parsing the page")
       return {
         title: "",
-        content: "<p>An error occured while parsing the page; please report the bug <a href=\"https://github.com/mozilla/readability/issues\">here</a>.</p><p>Error: <br/><pre>" + e.toString() + "</pre></p>"
+        content: "<p>An error occured while parsing the page; please report the bug <a href=\"https://github.com/mozilla/readability/issues\">here</a>.</p><p>Error: <br/><pre>" + e.toString() + "<br/>" + e.stack + "</pre></p>"
       }
     }
     if (!parsed) {
