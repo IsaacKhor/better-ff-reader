@@ -88,7 +88,9 @@ code, pre {
   padding: 2px;
   border-radius: 6px;
   overflow: scroll;
+  font-size: 14px;
 }
+
 blockquote { padding: 0; padding-inline-start: 16px;}
 
 .visually-hidden,
