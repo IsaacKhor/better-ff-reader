@@ -1,10 +1,3 @@
-function save() {
-  browser.storage.sync.set({
-    enableRegexes: listEditor.getValue().split('\n'),
-    stylesheet: stylesheetEditor.getValue()
-  })
-}
-
 (function() {
   var stylesheetEditor = CodeMirror.fromTextArea(
     document.getElementById("edit-stylesheet"),
@@ -14,5 +7,10 @@ function save() {
     document.getElementById("edit-autolist"),
     { lineNumbers: true })
 
-  document.getElementById("btn-save").addEventlistener('click', save())
+  document.getElementById("btn-save").addEventListener('click', function(e) {
+    browser.storage.sync.set({
+      enableRegexes: listEditor.getValue().split('\n'),
+      stylesheet: stylesheetEditor.getValue()
+    })
+  })
 })()
