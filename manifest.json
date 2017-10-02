@@ -7,7 +7,7 @@
   "homepage_url": "https://github.com/ClarenceClark/better-ff-reader",
 
   "icons": { "48": "icons/icon.svg" },
-  "permissions": ["activeTab", "storage"],
+  "permissions": ["tabs", "storage", "<all_urls>"],
 
   "applications": {
     "gecko": {
