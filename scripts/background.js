@@ -8,9 +8,8 @@ function toggleReadingMode(tab) {
   // The tabs api default to current tab if id is not provided
   var tabid = tab ? tab.id : null
 
-  // Guarantee order of script loading
-  browser.tabs.executeScript(tabid, { file: "/libs/Readability.js" })
-  browser.tabs.executeScript(tabid, { file: "/scripts/content.js" })
+  browser.tabs.executeScript(tabid, { file: "/libs/Readability.js", runAt: "document_end" })
+  browser.tabs.executeScript(tabid, { file: "/scripts/content.js", runAt: "document_end" })
   console.log("Toggle reading mode")
 }
 

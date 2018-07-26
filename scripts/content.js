@@ -26,7 +26,8 @@ function enableOverlay() {
     var ifb = ifd.body
     var customStylesheet = browser.storage.sync.get("stylesheet")
 
-    addStylesheet("/css/reader.css", ifd)
+    addStylesheet("/css/reader-ui.css", ifd)
+    addStylesheet("/css/reader-content.css")
     customStylesheet.then(function(e) {
       ifd.head.appendChild(getCustomStylesheetElem(e.stylesheet))
     })
@@ -38,6 +39,7 @@ function enableOverlay() {
 
     document.addEventListener('keyup', keyUpHandler)
     ifb.appendChild(container)
+    ifb.classList.add("white")
 
     // Make links target the whole page, not just the iframe
     Array.prototype.forEach.call(ifd.links, function(e,i) {
@@ -69,7 +71,7 @@ function enableOverlay() {
 
   function createContentContainer(content) {
     var contentContainer = document.createElement("div")
-    contentContainer.id = "reader-mode"
+    contentContainer.id = "article"
     contentContainer.innerHTML = content
     return contentContainer
   }
