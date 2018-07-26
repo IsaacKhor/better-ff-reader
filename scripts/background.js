@@ -8,8 +8,15 @@ function toggleReadingMode(tab) {
   // The tabs api default to current tab if id is not provided
   var tabid = tab ? tab.id : null
 
-  browser.tabs.executeScript(tabid, { file: "/libs/Readability.js", runAt: "document_end" })
-  browser.tabs.executeScript(tabid, { file: "/scripts/content.js", runAt: "document_end" })
+  browser.tabs.executeScript(tabid, {
+    file: "/libs/Readability.js",
+    runAt: "document_end"
+  }).then(() => {
+    browser.tabs.executeScript(tabid, {
+      file: "/scripts/content.js",
+      runAt: "document_end"
+    })
+  })
   console.log("Toggle reading mode")
 }
 
@@ -20,22 +27,24 @@ function processCommand(cmd) {
 }
 
 function onTabUpdate(id, info, tab) {
-  if(info.status != "complete") {return}
+  if (info.status != "complete") {
+    return
+  }
 
-  var match = enableRegexes.map(function(e) {
+  var match = enableRegexes.map(function (e) {
     return e.test(tab.url)
-  }).reduce(function(x,y) {
+  }).reduce(function (x, y) {
     return x || y
   }, false)
 
-  if(match) {
+  if (match) {
     toggleReadingMode(null)
   }
 }
 
 function onOptionsUpdate(changes, area) {
-  if(changes.enableRegexes && changes.enableRegexes.newValue.length > 0) {
-    enableRegexes = changes.enableRegexes.newValue.map(function(e) {
+  if (changes.enableRegexes && changes.enableRegexes.newValue.length > 0) {
+    enableRegexes = changes.enableRegexes.newValue.map(function (e) {
       return new RegExp(e)
     })
   }

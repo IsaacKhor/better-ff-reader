@@ -27,7 +27,7 @@ function enableOverlay() {
     var customStylesheet = browser.storage.sync.get("stylesheet")
 
     addStylesheet("/css/reader-ui.css", ifd)
-    addStylesheet("/css/reader-content.css")
+    addStylesheet("/css/reader-content.css", ifd)
     customStylesheet.then(function(e) {
       ifd.head.appendChild(getCustomStylesheetElem(e.stylesheet))
     })
@@ -102,9 +102,9 @@ function enableOverlay() {
       return {
         title: "",
         content:
-          "<p>An error occured while parsing the page; please report the bug" +
-          "<a href=\"https://github.com/mozilla/readability/issues\">here</a>." +
-          "</p><p>Error: <br/><pre>" + e.toString() + "<br/>" + e.stack + "</pre></p>"
+          `<p>An error occured while parsing the page; please report the bug
+          <a href=\"https://github.com/mozilla/readability/issues\">here</a>.
+          </p><p>Error: <br/><pre>${e.toString()}<br/> ${e.stack} </pre></p>`
       }
     }
     if (!parsed) {
@@ -139,6 +139,7 @@ function enableOverlay() {
 }
 
 function main() {
+  console.log('Hello world!')
   if (document.getElementById("reader-mode") == null) {
     enableOverlay()
   } else {
